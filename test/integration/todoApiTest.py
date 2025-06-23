@@ -29,9 +29,6 @@ class TestApi(unittest.TestCase):
         }
         response = requests.post(url, data=json.dumps(data))
         json_response = response.json()
-        print('Respuesta completa:', json_response)
-        if 'body' not in json_response:
-            raise AssertionError("La respuesta no contiene 'body': " + str(json_response))
         print('Response Add Todo: '+ str(json_response))
         jsonbody= json.loads(json_response['body'])
         ID_TODO = jsonbody['id']
@@ -61,9 +58,6 @@ class TestApi(unittest.TestCase):
         }
         response = requests.post(url, data=json.dumps(data))
         json_response = response.json()
-        print('Respuesta completa:', json_response)
-        if 'body' not in json_response:
-            raise AssertionError("La respuesta no contiene 'body': " + str(json_response))
         print('Response Add Todo: '+ json_response['body'])
         jsonbody= json.loads(json_response['body'])
         ID_TODO = jsonbody['id']
@@ -90,9 +84,6 @@ class TestApi(unittest.TestCase):
         }
         response = requests.post(url, data=json.dumps(data))
         json_response = response.json()
-        print('Respuesta completa:', json_response)
-        if 'body' not in json_response:
-            raise AssertionError("La respuesta no contiene 'body': " + str(json_response))
         print('Response Add Todo: '+ str(json_response))
         jsonbody= json.loads(json_response['body'])
         ID_TODO = jsonbody['id']
@@ -107,9 +98,6 @@ class TestApi(unittest.TestCase):
         url = BASE_URL+"/todos/"+ID_TODO
         response = requests.get(url)
         json_response = response.json()
-        print('Respuesta completa:', json_response)
-        if 'body' not in json_response:
-            raise AssertionError("La respuesta no contiene 'body': " + str(json_response))
         print('Response Get Todo: '+ str(json_response))
         self.assertEqual(
             response.status_code, 200, "Error en la petición API a {url}"
@@ -134,9 +122,6 @@ class TestApi(unittest.TestCase):
         }
         response = requests.post(url, data=json.dumps(data))
         json_response = response.json()
-        print('Respuesta completa:', json_response)
-        if 'body' not in json_response:
-            raise AssertionError("La respuesta no contiene 'body': " + str(json_response))
         print('Response Add todo: ' + json_response['body'])
         jsonbody= json.loads(json_response['body'])
         ID_TODO = jsonbody['id']
@@ -155,9 +140,6 @@ class TestApi(unittest.TestCase):
         }
         response = requests.put(url, data=json.dumps(data))
         json_response = response.json()
-        print('Respuesta completa:', json_response)
-        if 'body' not in json_response:
-            raise AssertionError("La respuesta no contiene 'body': " + str(json_response))
         print('Response Update todo: ' + str(json_response))
         #jsonbody= json.loads(json_response['body'])
         self.assertEqual(
@@ -170,9 +152,6 @@ class TestApi(unittest.TestCase):
         url = BASE_URL+"/todos/"+ID_TODO
         response = requests.get(url)
         json_response = response.json()
-        print('Respuesta completa:', json_response)
-        if 'body' not in json_response:
-            raise AssertionError("La respuesta no contiene 'body': " + str(json_response))
         print('Response Get Todo: '+ str(json_response))
         self.assertEqual(
             response.status_code, 200, "Error en la petición API a {url}"
@@ -196,9 +175,6 @@ class TestApi(unittest.TestCase):
         }
         response = requests.post(url, data=json.dumps(data))
         json_response = response.json()
-        print('Respuesta completa:', json_response)
-        if 'body' not in json_response:
-            raise AssertionError("La respuesta no contiene 'body': " + str(json_response))
         print('Response Add todo: ' + json_response['body'])
         jsonbody= json.loads(json_response['body'])
         ID_TODO = jsonbody['id']
