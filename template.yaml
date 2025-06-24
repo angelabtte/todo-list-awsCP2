@@ -35,7 +35,7 @@ Resources:
       Handler: create.create
       Runtime: python3.10
       Events:
-        Create:
+        CreateTodo:
           Type: Api
           Properties:
             Path: /todos
@@ -48,7 +48,7 @@ Resources:
       Handler: list.list
       Runtime: python3.10
       Events:
-        Create:
+        ListTodos:
           Type: Api
           Properties:
             Path: /todos
@@ -61,7 +61,7 @@ Resources:
       Handler: get.get
       Runtime: python3.10
       Events:
-        Create:
+        GetTodo:
           Type: Api
           Properties:
             Path: /todos/{id}
@@ -74,7 +74,7 @@ Resources:
       Handler: update.update
       Runtime: python3.10
       Events:
-        Create:
+        UpdateTodo:
           Type: Api
           Properties:
             Path: /todos/{id}
@@ -87,7 +87,7 @@ Resources:
       Handler: delete.delete
       Runtime: python3.10
       Events:
-        Create:
+        DeleteTodo:
           Type: Api
           Properties:
             Path: /todos/{id}
@@ -130,4 +130,3 @@ Outputs:
   DeleteTodoApi:
     Description: "API Gateway endpoint URL for ${opt:stage} stage for Delete TODO"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/todos/{id}"
-
