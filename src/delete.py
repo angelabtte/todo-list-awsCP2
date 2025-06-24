@@ -6,7 +6,12 @@ def delete(event, context):
 
     # create a response
     response = {
-        "statusCode": 200
+    "statusCode": 200,
+    "headers": {
+        "Content-Type": "application/json"
+    },
+    "body": json.dumps({"message": "Item deleted"})
     }
+
 
     return response
