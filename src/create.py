@@ -10,12 +10,8 @@ def create(event, context):
         raise Exception("Couldn't create the todo item.")
     item = todoList.put_item(data['text'])
     # create a response
-    
-response = {
-    "statusCode": 200,
-    "headers": {
-        "Content-Type": "application/json"
-    },
-    "body": json.dumps(item)
-}
+    response = {
+        "statusCode": 200,
+        "body": json.dumps(item)
+    }
     return response
