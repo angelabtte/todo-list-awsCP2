@@ -35,7 +35,7 @@ Resources:
       Handler: create.create
       Runtime: python3.10
       Events:
-        CreateTodo:
+        Create:
           Type: Api
           Properties:
             Path: /todos
@@ -48,7 +48,7 @@ Resources:
       Handler: list.list
       Runtime: python3.10
       Events:
-        ListTodos:
+        Create:
           Type: Api
           Properties:
             Path: /todos
@@ -61,7 +61,7 @@ Resources:
       Handler: get.get
       Runtime: python3.10
       Events:
-        GetTodo:
+        Create:
           Type: Api
           Properties:
             Path: /todos/{id}
@@ -74,7 +74,7 @@ Resources:
       Handler: update.update
       Runtime: python3.10
       Events:
-        UpdateTodo:
+        Create:
           Type: Api
           Properties:
             Path: /todos/{id}
@@ -87,7 +87,7 @@ Resources:
       Handler: delete.delete
       Runtime: python3.10
       Events:
-        DeleteTodo:
+        Create:
           Type: Api
           Properties:
             Path: /todos/{id}
@@ -114,19 +114,20 @@ Outputs:
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   BaseUrlApi:
     Description: "Base URL of API"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/${Stage}"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod"
   CreateTodoApi:
     Description: "API Gateway endpoint URL for ${opt:stage} stage for Create TODO"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/todos/"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/todos/"
   ListTodosApi:
     Description: "API Gateway endpoint URL for ${opt:stage} stage for List TODO"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/todos"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/todos"
   GetTodoApi:
     Description: "API Gateway endpoint URL for ${opt:stage} stage for Get TODO"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/todos/{id}"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/todos/{id}"
   UpdateTodoApi:
     Description: "API Gateway endpoint URL for ${opt:stage} stage for Update TODO"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/todos/{id}"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/todos/{id}"
   DeleteTodoApi:
     Description: "API Gateway endpoint URL for ${opt:stage} stage for Delete TODO"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/todos/{id}"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/todos/{id}"
+
