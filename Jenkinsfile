@@ -108,25 +108,27 @@ pipeline {
         }
 
         stage('Promote') {
-            when {
-                expression { env.BRANCH_NAME == 'develop' }
-            }
-            steps {
-                echo "Promoviendo versión a producción..."
-                sh '''
-                    git config --global user.email "angel.bts12@gmail.com"
-                    git config --global user.name "angelabtte"
-                '''
-                withCredentials([usernamePassword(credentialsId: 'tokencp3', usernameVariable: 'angelabtte', passwordVariable: 'tokencp3')]) {
-                    sh '''
-                        git remote set-url origin https://${angelabtte}:${tokencp3}@github.com/angelabtte/todo-list-awsCP2.git
-                        git fetch origin
-                        git checkout master || git checkout -b master origin/develop
-                        git merge origin/develop -m "Promoción automática a producción desde Jenkins"
-                        git push origin master
-                    '''
-                }
-            }
+    when {
+        expression { env.BRANCH_NAME == 'develop' }
+    }
+    steps {
+        echo "Promoviendo versión a producción..."
+        sh '''
+            git config --global user.email "angel.bts12@gmail.com"
+            git config --global user.name "angelabtte"
+        '''
+        withCredentials([usernamePassword(credentialsId: 'tokencp3', usernameVariable: 'angelabtte', passwordVariable: 'tokencp3')]) {
+            sh '''
+                git remote set-url origin https://${angelabtte}:${tokencp3}@github.com/angelabtte/todo-list-awsCP2.git
+                git fetch origin
+                git checkout master || git checkout -b master origin/develop
+                git merge origin/develop -m "Promoción automática a producción desde Jenkins"
+                git pull --rebase origin master
+                git push origin master
+            '''
         }
+    }
+}
+
     }
 }
